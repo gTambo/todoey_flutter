@@ -15,7 +15,9 @@ class TasksScreen extends StatelessWidget {
           size: 45,
         ),
         onPressed: () {
-          // add a task
+          // trigger bottom sheet
+          showModalBottomSheet(
+              context: context, builder: (BuildContext context) => Container());
         },
       ),
       body: Column(
