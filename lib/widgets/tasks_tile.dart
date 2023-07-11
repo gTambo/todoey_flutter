@@ -4,25 +4,25 @@ class TaskTile extends StatelessWidget {
   const TaskTile({
     super.key,
     required this.titleText,
-    this.isChecked,
-    this.titleDecoration,
+    this.isChecked = false,
   });
 
   final String titleText;
-  final bool? isChecked;
-  final TextDecoration? titleDecoration;
+  final bool isChecked;
 
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
-      value: isChecked ?? false,
-      onChanged: (value) {
-        // toggle value
-        print('clicked "buy milk"');
+      value: isChecked,
+      onChanged: (isChecked) {
+        // callback from parent
       },
+      activeColor: Colors.lightBlueAccent,
       title: Text(
         titleText,
-        style: TextStyle(fontSize: 18, decoration: titleDecoration),
+        style: TextStyle(
+            fontSize: 18,
+            decoration: isChecked ? TextDecoration.lineThrough : null),
       ),
     );
   }
