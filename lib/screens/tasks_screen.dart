@@ -23,7 +23,7 @@ class TasksScreen extends StatelessWidget {
           Container(
             padding:
                 const EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
@@ -58,12 +58,53 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),
+              ),
+              child: ListView(
+                children: [
+                  CheckboxListTile(
+                    value: true,
+                    onChanged: (value) {
+                      // toggle value
+                      print('clicked "buy milk"');
+                    },
+                    title: const Text(
+                      'Buy milk',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  CheckboxListTile(
+                    value: false,
+                    onChanged: (value) {
+                      // toggle value
+                      print('clicked "buy eggs"');
+                    },
+                    title: const Text(
+                      'Buy eggs',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  CheckboxListTile(
+                    value: false,
+                    onChanged: (value) {
+                      // toggle value
+                      print('clicked "buy bread"');
+                    },
+                    title: const Text(
+                      'Buy bread',
+                      style: TextStyle(
+                        fontSize: 18,
+                        decoration: TextDecoration.lineThrough,
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
           ),
