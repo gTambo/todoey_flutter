@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_flutter/widgets/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
@@ -66,46 +67,7 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: ListView(
-                children: [
-                  CheckboxListTile(
-                    value: true,
-                    onChanged: (value) {
-                      // toggle value
-                      print('clicked "buy milk"');
-                    },
-                    title: const Text(
-                      'Buy milk',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  CheckboxListTile(
-                    value: false,
-                    onChanged: (value) {
-                      // toggle value
-                      print('clicked "buy eggs"');
-                    },
-                    title: const Text(
-                      'Buy eggs',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  CheckboxListTile(
-                    value: false,
-                    onChanged: (value) {
-                      // toggle value
-                      print('clicked "buy bread"');
-                    },
-                    title: const Text(
-                      'Buy bread',
-                      style: TextStyle(
-                        fontSize: 18,
-                        decoration: TextDecoration.lineThrough,
-                      ),
-                    ),
-                  )
-                ],
-              ),
+              child: TasksList(),
             ),
           ),
         ],
