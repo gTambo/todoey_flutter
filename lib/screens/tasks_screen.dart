@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todoey_flutter/screens/add_task_screen.dart';
 import 'package:todoey_flutter/widgets/tasks_list.dart';
 import 'package:todoey_flutter/models/task.dart';
+import 'package:todoey_flutter/provider_data.dart';
 
 class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
@@ -45,13 +47,14 @@ class _TasksScreenState extends State<TasksScreen> {
               padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom),
               child: AddTaskScreen(
-                addTask: (taskName) {
-                  setState(() {
-                    tasks.add(Task(name: taskName));
-                  });
-                  _controller.clear();
-                  Navigator.pop(context);
-                },
+                controller: _controller,
+                // addTask: (taskName) {
+                //   setState(() {
+                //     tasks.add(Task(name: taskName));
+                //   });
+                //   _controller.clear();
+                //   Navigator.pop(context);
+                // },
               ),
             ),
           );
@@ -87,7 +90,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '${tasks.length} Tasks',
+                  '${Provider.of<Data>(context).tasks.length} Tasks',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -107,17 +110,17 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
               ),
               child: TasksList(
-                tasks: tasks,
-                // checkboxCallback: (int index, bool? newValue) {
-                //   tasks.asMap().forEach((i, task) {
-                //     if (i == index) {
-                //       setState(() {
-                //         task.toggleDone();
-                //       });
-                //     }
-                //   });
-                // },
-              ),
+                  // tasks: tasks,
+                  // checkboxCallback: (int index, bool? newValue) {
+                  //   tasks.asMap().forEach((i, task) {
+                  //     if (i == index) {
+                  //       setState(() {
+                  //         task.toggleDone();
+                  //       });
+                  //     }
+                  //   });
+                  // },
+                  ),
             ),
           ),
         ],
