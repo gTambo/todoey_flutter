@@ -12,7 +12,6 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
   List<Task> tasks = [];
-  // late String totalTasks = tasks.length.toString();
   late TextEditingController _controller;
 
   @override
@@ -39,7 +38,6 @@ class _TasksScreenState extends State<TasksScreen> {
           size: 45,
         ),
         onPressed: () {
-          // trigger bottom sheet
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
@@ -47,12 +45,12 @@ class _TasksScreenState extends State<TasksScreen> {
               padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom),
               child: AddTaskScreen(
-                // controller: _controller,
                 addTask: (taskName) {
                   setState(() {
                     tasks.add(Task(name: taskName));
                   });
                   _controller.clear();
+                  Navigator.pop(context);
                 },
               ),
             ),
@@ -89,7 +87,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '${tasks.length.toString()} Tasks',
+                  '${tasks.length} Tasks',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -100,7 +98,7 @@ class _TasksScreenState extends State<TasksScreen> {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -110,16 +108,15 @@ class _TasksScreenState extends State<TasksScreen> {
               ),
               child: TasksList(
                 tasks: tasks,
-                checkboxCallback: (int index, bool? newValue) {
-                  // for (var i = 0; i < tasks.length; i++) {
-                  tasks.asMap().forEach((i, task) {
-                    if (i == index) {
-                      setState(() {
-                        task.toggleDone();
-                      });
-                    }
-                  });
-                },
+                // checkboxCallback: (int index, bool? newValue) {
+                //   tasks.asMap().forEach((i, task) {
+                //     if (i == index) {
+                //       setState(() {
+                //         task.toggleDone();
+                //       });
+                //     }
+                //   });
+                // },
               ),
             ),
           ),
