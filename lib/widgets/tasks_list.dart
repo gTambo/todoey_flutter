@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'tasks_tile.dart';
+import 'package:todoey_flutter/models/task.dart';
 
 class TasksList extends StatefulWidget {
   const TasksList({
@@ -7,7 +8,7 @@ class TasksList extends StatefulWidget {
     required this.tasks,
   });
 
-  final List tasks;
+  final List<Task> tasks;
 
   @override
   State<TasksList> createState() => _TasksListState();
