@@ -1,10 +1,11 @@
-class Task {
-  final String? name;
-  bool? isDone;
+import 'package:flutter/cupertino.dart';
 
-  Task({this.name, this.isDone = false});
+class Task {
+  final String name;
+  bool isDone;
+  Task({required this.name, this.isDone = false});
 
   void toggleDone() {
-    isDone ??= !isDone!;
+    isDone = !isDone;
   }
 }
