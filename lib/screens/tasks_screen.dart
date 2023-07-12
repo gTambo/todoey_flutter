@@ -11,12 +11,8 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(name: 'Buy milk'),
-    Task(name: 'Buy eggs'),
-    Task(name: 'Buy bread'),
-  ];
-
+  List<Task> tasks = [];
+  // late String totalTasks = tasks.length.toString();
   late TextEditingController _controller;
 
   @override
@@ -51,11 +47,12 @@ class _TasksScreenState extends State<TasksScreen> {
               padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom),
               child: AddTaskScreen(
-                controller: _controller,
+                // controller: _controller,
                 addTask: (taskName) {
                   setState(() {
                     tasks.add(Task(name: taskName));
                   });
+                  _controller.clear();
                 },
               ),
             ),
@@ -68,10 +65,10 @@ class _TasksScreenState extends State<TasksScreen> {
           Container(
             padding:
                 const EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundColor: Colors.white,
                   radius: 30,
                   child: Icon(
@@ -80,10 +77,10 @@ class _TasksScreenState extends State<TasksScreen> {
                     color: Colors.lightBlueAccent,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   'Todoey',
                   style: TextStyle(
                     color: Colors.white,
@@ -92,8 +89,8 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '12 Tasks',
-                  style: TextStyle(
+                  '${tasks.length.toString()} Tasks',
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                   ),
