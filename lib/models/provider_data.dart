@@ -1,8 +1,7 @@
-import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart';
-import 'models/task.dart';
+import 'task.dart';
 
-class Data extends ChangeNotifier {
+class TaskData extends ChangeNotifier {
   List<Task> tasks = [];
 
   void addTask(String newTask) {

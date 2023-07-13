@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todoey_flutter/provider_data.dart';
+import 'package:todoey_flutter/models/provider_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
   AddTaskScreen({
     super.key,
-    // required this.addTask,
     required this.controller,
   });
 
   final TextEditingController controller;
-  // final Function addTask;
   String inputText = '';
 
   final ButtonStyle style =
@@ -49,7 +47,8 @@ class AddTaskScreen extends StatelessWidget {
               TextButton(
                 style: style,
                 onPressed: () {
-                  Provider.of<Data>(context, listen: false).addTask(inputText);
+                  Provider.of<TaskData>(context, listen: false)
+                      .addTask(inputText);
                   controller.clear();
                   Navigator.pop(context);
                 },

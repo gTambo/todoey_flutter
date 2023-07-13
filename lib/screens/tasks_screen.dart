@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:todoey_flutter/screens/add_task_screen.dart';
 import 'package:todoey_flutter/widgets/tasks_list.dart';
 import 'package:todoey_flutter/models/task.dart';
-import 'package:todoey_flutter/provider_data.dart';
+import 'package:todoey_flutter/models/provider_data.dart';
 
 class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
@@ -90,7 +90,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '${Provider.of<Data>(context).tasks.length} Tasks',
+                  '${Provider.of<TaskData>(context).tasks.length} Tasks',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
