@@ -8,7 +8,6 @@ class TaskTile extends StatelessWidget {
     required this.checkboxCallback,
   });
 
-  // final int index;
   final String titleText;
   final bool isChecked;
   final Function(bool?) checkboxCallback;
