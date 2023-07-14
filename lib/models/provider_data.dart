@@ -23,6 +23,11 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
+  void deleteTask(Task task) {
+    _tasks.remove(task);
+    notifyListeners();
+  }
+
   // void toggleTaskDone(taskIndex, bool? isChanged) {
   //   _tasks.asMap().forEach(
   //     (key, task) {
