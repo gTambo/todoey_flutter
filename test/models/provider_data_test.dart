@@ -20,6 +20,11 @@ void main() {
       reset(notifyListenerCallback); // resets your mock before each test
     });
 
+    test('returns a list of tasks', () {
+      taskData.addTask('task one');
+      expect(taskData.tasks, isA<List<Task>>());
+    });
+
     test('adds a task and calls listeners', () {
       taskData.addTask('task one');
       expect(taskData.taskCount, 1);
