@@ -26,9 +26,9 @@ void main() {
     });
 
     test('adds a task and calls listeners', () {
-      taskData.addTask('task one');
+      taskData.addTask('task one'); // notify listeners
       expect(taskData.taskCount, 1);
-      taskData.addTask('task two');
+      taskData.addTask('task two'); // notify listeners
       verify(notifyListenerCallback())
           .called(2); // verify listener were notified twice
     });
@@ -39,6 +39,24 @@ void main() {
       taskData.addTask('task two');
       verify(notifyListenerCallback()).called(
           2); // verify listener were notified twice. This only works, if you have reset your mocks
+    });
+
+    test('updates a task and calls listeners', () {
+      taskData.addTask('task one');
+      final task1 = taskData.tasks[0];
+      expect(task1.isDone, false);
+      taskData.updateTask(task1);
+      expect(task1.isDone, true);
+      verify(notifyListenerCallback())
+          .called(2); // verify listener were notified twice
+    });
+    test('removes a task and calls listeners', () {
+      taskData.addTask('task one');
+      expect(taskData.taskCount, 1);
+      final task1 = taskData.tasks[0];
+      taskData.deleteTask(task1);
+      expect(taskData.taskCount, 0);
+      verify(notifyListenerCallback()).called(2);
     });
   });
 }
