@@ -29,11 +29,16 @@ void main() {
     testWidgets('checkbox test', (WidgetTester tester) async {
       await tester.pumpWidget(createTasksScreen());
       await tester.pumpAndSettle();
+
       expect(taskData.taskCount, equals(0));
       taskData.addTask('task 1');
       await tester.pumpAndSettle();
       expect(taskData.taskCount, equals(1));
-      expect(find.byType(Checkbox), findsOneWidget);
+      expect(taskData.tasks[0].isDone, false);
+      var task1 = find.byType(Checkbox).first;
+      await tester.tap(task1);
+      await tester.pumpAndSettle();
+      expect(taskData.tasks[0].isDone, true);
     });
   });
 }
