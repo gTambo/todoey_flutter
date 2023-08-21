@@ -2,8 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/models/provider_data.dart';
-import 'package:todoey_flutter/models/task.dart';
-import 'package:todoey_flutter/widgets/tasks_list.dart';
 import 'package:todoey_flutter/screens/tasks_screen.dart';
 
 late TaskData taskData;
