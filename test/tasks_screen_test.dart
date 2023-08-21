@@ -40,5 +40,15 @@ void main() {
       await tester.pumpAndSettle();
       expect(taskData.tasks[0].isDone, true);
     });
+    testWidgets('test long-press delete', (WidgetTester tester) async {
+      await tester.pumpWidget(createTasksScreen());
+      taskData.addTask('task 1');
+      await tester.pumpAndSettle();
+      var task1 = find.text('task 1');
+      expect(task1, findsOneWidget);
+      await tester.longPress(task1);
+      await tester.pumpAndSettle();
+      expect(task1, findsNothing);
+    });
   });
 }
