@@ -89,7 +89,7 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: TasksList(
+              child: const TasksList(
                   // tasks: tasks,
                   // checkboxCallback: (int index, bool? newValue) {
                   //   tasks.asMap().forEach((i, task) {
