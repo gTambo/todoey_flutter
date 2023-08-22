@@ -56,5 +56,18 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 1));
       expect(find.text('Add Task'), findsOneWidget);
     });
+    testWidgets('adding a new task displays the task on tasks screen',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(createTasksScreen());
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pumpAndSettle(const Duration(seconds: 1));
+
+      await tester.enterText(find.byType(TextField).first, 'test task');
+      await tester.tap(find.byType(TextButton));
+      await tester.pumpAndSettle(const Duration(seconds: 1));
+      expect(find.text('Add Task'), findsNothing); // add task screen is gone
+      expect(find.text('test task'),
+          findsOneWidget); // task is now on tasks screen
+    });
   });
 }
