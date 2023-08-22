@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:todoey_flutter/main.dart';
-import 'package:todoey_flutter/models/provider_data.dart';
-
-import 'screens/tasks_screen_test.dart';
 
 void main() {
   group('Main App', () {

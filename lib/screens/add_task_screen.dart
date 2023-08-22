@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/models/provider_data.dart';
 
+//ignore: must_be_immutable
 class AddTaskScreen extends StatelessWidget {
   AddTaskScreen({
     super.key,
@@ -9,7 +10,6 @@ class AddTaskScreen extends StatelessWidget {
   });
 
   final TextEditingController controller;
-  String inputText = '';
 
   final ButtonStyle style =
       TextButton.styleFrom(backgroundColor: Colors.lightBlueAccent);
@@ -37,21 +37,15 @@ class AddTaskScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 40, color: Colors.lightBlueAccent),
               ),
               TextField(
+                controller: controller,
                 autofocus: true,
                 textAlign: TextAlign.center,
-                onChanged: (newText) {
-                  inputText = newText;
-                },
-                // onSubmitted: (newText) {
-                //   inputText = newText;
-                // },
               ),
               const SizedBox(height: 15),
               TextButton(
                 style: style,
                 onPressed: () {
-                  Provider.of<TaskData>(context, listen: false)
-                      .addTask(inputText);
+                  context.read<TaskData>().addTask(controller.text);
                   Navigator.pop(context);
                   controller.clear();
                 },

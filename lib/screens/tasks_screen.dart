@@ -8,10 +8,9 @@ import 'package:todoey_flutter/models/provider_data.dart';
 class TasksScreen extends StatelessWidget {
   TasksScreen({super.key});
 
-  List<Task> tasks = [];
+  final List<Task> tasks = [];
   final TextEditingController _controller = TextEditingController();
 
-  @override
   void dispose() {
     _controller.dispose();
   }
