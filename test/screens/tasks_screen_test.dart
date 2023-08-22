@@ -24,7 +24,8 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(ListView), findsOneWidget);
     });
-    testWidgets('checkbox test', (WidgetTester tester) async {
+    testWidgets('tapping checkbox changes task to done',
+        (WidgetTester tester) async {
       await tester.pumpWidget(createTasksScreen());
       await tester.pumpAndSettle();
 
@@ -38,7 +39,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(taskData.tasks[0].isDone, true);
     });
-    testWidgets('test long-press delete', (WidgetTester tester) async {
+    testWidgets('long-press on task deletes task', (WidgetTester tester) async {
       await tester.pumpWidget(createTasksScreen());
       taskData.addTask('task 1');
       await tester.pumpAndSettle();
@@ -47,6 +48,13 @@ void main() {
       await tester.longPress(task1);
       await tester.pumpAndSettle();
       expect(task1, findsNothing);
+    });
+    testWidgets('floating action button opens add-task widget',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(createTasksScreen());
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pumpAndSettle(const Duration(seconds: 1));
+      expect(find.text('Add Task'), findsOneWidget);
     });
   });
 }
