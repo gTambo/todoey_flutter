@@ -27,7 +27,7 @@ class AddTaskScreen extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.all(30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -42,6 +42,9 @@ class AddTaskScreen extends StatelessWidget {
                 onChanged: (newText) {
                   inputText = newText;
                 },
+                // onSubmitted: (newText) {
+                //   inputText = newText;
+                // },
               ),
               const SizedBox(height: 15),
               TextButton(
@@ -49,8 +52,8 @@ class AddTaskScreen extends StatelessWidget {
                 onPressed: () {
                   Provider.of<TaskData>(context, listen: false)
                       .addTask(inputText);
-                  controller.clear();
                   Navigator.pop(context);
+                  controller.clear();
                 },
                 child: const Text(
                   'Add',
