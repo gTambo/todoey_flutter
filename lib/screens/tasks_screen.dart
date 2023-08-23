@@ -11,10 +11,6 @@ class TasksScreen extends StatelessWidget {
   final List<Task> tasks = [];
   final TextEditingController _controller = TextEditingController();
 
-  void dispose() {
-    _controller.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,18 +84,7 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: const TasksList(
-                  // tasks: tasks,
-                  // checkboxCallback: (int index, bool? newValue) {
-                  //   tasks.asMap().forEach((i, task) {
-                  //     if (i == index) {
-                  //       setState(() {
-                  //         task.toggleDone();
-                  //       });
-                  //     }
-                  //   });
-                  // },
-                  ),
+              child: const TasksList(),
             ),
           ),
         ],
